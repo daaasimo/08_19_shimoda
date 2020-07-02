@@ -3,6 +3,7 @@ function db_connect()
 {
 
     try {
+        //エラーが出る可能性のあるコードをtryブロックでくるみ、chatchブロックでエラーを受け止める仕組みで
         $dsn = 'mysql:dbname=gsacf_d06_19;host=localhost;charset=utf8';
         $user = 'root';
         $password = '';
