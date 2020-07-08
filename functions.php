@@ -1,20 +1,33 @@
 <?php
-function db_connect()
+
+function connect_to_db()
 {
+  // DB接続の設定
+  // DB名は`gsacf_x00_00`にする
+  $dbn = 'mysql:dbname=gsacf_d06_19;charset=utf8;port=3306;host=localhost';
+  $user = 'root';
+  $pwd = '';
 
-    try {
-        //エラーが出る可能性のあるコードをtryブロックでくるみ、chatchブロックでエラーを受け止める仕組みで
-        $dsn = 'mysql:dbname=gsacf_d06_19;host=localhost;charset=utf8';
-        $user = 'root';
-        $password = '';
+  try {
+    // ここでDB接続処理を実行する
+    return new PDO($dbn, $user, $pwd);
+  } catch (PDOException $e) {
+    // DB接続に失敗した場合はここでエラーを出力し，以降の処理を中止する
+    echo json_encode(["db error" => "{$e->getMessage()}"]);
+    exit();
+  }
+}
 
-        $dbh = new PDO($dsn, $user, $password);
-        $dbh->query('SET NAMES utf8');
-        $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-        return $dbh;
-    } catch (PDOException $e) {
-        print "エラー: " . $e->getMessage() . "<br/>";
-        die();
-    }
+// ログイン状態のチェック関数
+function check_session_id()
+{
+  if (
+    !isset($_SESSION['session_id']) ||
+    $_SESSION['session_id'] != session_id()
+  ) {
+    header('Location: todo_login.php'); //ログイン画面へ移動
+  } else {
+    session_regenerate_id(true); // セッションidの再生成
+    $_SESSION['session_id'] = session_id(); // セッション変数に格納
+  }
 }
