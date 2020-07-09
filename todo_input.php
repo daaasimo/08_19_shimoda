@@ -1,46 +1,44 @@
-<?php
-session_start();
-include("functions.php");
-check_session_id();
-?>
-
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DB連携型todoリスト（入力画面）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/page2.css">
+  <title>todolist</title>
 </head>
 
+<!-- TOP画面 -->
+
 <body>
+  <div class="page01">
+    <h1>SIMPLE TODO</h1>
+    <button id="start">START</button>
+  </div>
 
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/page2.css?<?= strtotime('now') ?>">
-    <title>Todoリスト</title>
-  </head>
+  <!-- 入力画面 -->
+  <div class="page02" style="display: none;">
+    <form action="todo_create.php" method="POST">
+      <fieldset style="
+    border: none;">
 
-  <h1>TODO LIST</h1>
-
-  <form action="todo_create.php" method="POST">
-    <fieldset style="
-    border: none;
-">
-      <legend>DB連携型todoリスト（入力画面）</legend>
-      <a href="todo_read.php">一覧画面</a>
-      <a href="todo_logout.php">logout</a>
-      <div>
-        todo: <input type="text" name="todo">
-      </div>
-      <div>
+        <a href="todo_read.php">一覧画面</a>
+        <a href="todo_logout.php">logout</a>
         deadline: <input type="date" name="deadline">
-      </div>
-      <div>
+        todo: <input type="text" name="todo">
         <button>submit</button>
-      </div>
-    </fieldset>
-  </form>
+      </fieldset>
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $("#start").on("click", function() {
+      $(".page01").remove();
+      $(".page02").fadeIn();
+    });
+  </script>
 
 </body>
 

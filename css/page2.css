@@ -1,11 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background-image: none;
+    background-image: url(../images/image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
  
@@ -14,77 +8,8 @@ body {
      -webkit-animation: random 15s infinite;
      animation: random 15s infinite;
 }
-@keyframes  random {
-    0% { background-image: url(../images/image.jpg); } 
-    25% { background-image: url(../images/image2.jpg); } 
-    50% { background-image: url(../images/image3.jpg); } 
-    75% { background-image: url(../images/image4.jpg); }
-    100% { background-image: url(../images/image.jpg); }  
-
-}
-div
-{
-  width:100px;
-  height:100px;
-  transition: all -0.8s ease-in;
-}
-.center
-{ 
-  margin:auto;
-  position:absolute;
-  top:0; bottom:0; left:0; right:0;
-}
 
 h1 {
     background: none;
     margin-bottom: 20px;
 }
-form.task_input {
-    background: #aaa;
-    width: 500px;
-    margin: 0 auto 20px;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 10px;
-}
-.task_input .textarea {
-    border: none;
-    flex: 1;
-    outline: none;
-    padding: 5px 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.task_input .submit {
-    border: none;
-    background: #fff;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-ul.task_list {
-    background: #aaa;
-    width: 500px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-}
-ul.task_list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: solid 1px #ddd;
-}
-ul.task_list li span {
-}
-ul.task_list li form button {
-    border: none;
-    font-size: 24px;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-}
-
-
